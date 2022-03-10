@@ -30,6 +30,7 @@ name: ci
 on:
   push:
     branches: [main]
+
 jobs:
   wait_for_vercel:
     name: Wait for vercel
@@ -58,14 +59,14 @@ jobs:
 #        env:
 #          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
 #          VERCEL_ENV: preview
-     - name: Install dependencies
-       run: yarn
-     - name: Install Playwright
-       run: npx playwright install --with-deps
-     - name: Run Playwright tests
-       run: yarn playwright test
-       env:
-        PLAYWRIGHT_TEST_BASE_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
+      - name: Install dependencies
+        run: yarn
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: yarn playwright test
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
 #
 #         env:
 #           VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
