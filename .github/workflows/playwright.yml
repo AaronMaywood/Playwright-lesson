@@ -29,7 +29,7 @@
 name: ci
 on:
   push:
-    branches: [main]
+    branches: [main,master]
 
 jobs:
   wait_for_vercel:
