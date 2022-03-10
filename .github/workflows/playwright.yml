@@ -1,35 +1,10 @@
-#name: Playwright Tests
-#on:
-#  push:
-#    branches: [ main, master ]
-#  pull_request:
-#    branches: [ main, master ]
-#jobs:
-#  test:
-#    timeout-minutes: 60
-#    runs-on: ubuntu-latest
-#    steps:
-#    - uses: actions/checkout@v2
-#    - uses: actions/setup-node@v2
-#      with:
-#        node-version: '14.x'
-#    - name: Install dependencies
-#      run: yarn
-#    - name: Install Playwright
-#      run: npx playwright install --with-deps
-#    - name: Run Playwright tests
-#      run: yarn playwright test
-#    - uses: actions/upload-artifact@v2
-#      if: always()
-#      with:
-#        name: playwright-report
-#        path: playwright-report/
-#        retention-days: 30
+# Vercel へのデプロイを待ち、テストを実行する
+# テスト(tests/screenshots.spec.js) にはVercel側Production URL(https://playwright-lesson.vercel.app/) を指定してある
 
 name: ci
 on:
   push:
-    branches: [main,master]
+    branches: [CI]
 
 jobs:
   wait_for_vercel:
@@ -49,36 +24,21 @@ jobs:
     needs: wait_for_vercel
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+# GitHub Actions の仮想マシン(ubuntu-latest) 上に本リポジトリーのCIブランチをclone.
+# https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+        with:
+          ref: CI
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-#      - uses: microsoft/playwright-github-action@v1
-#      - run: npm install --include=dev
-#      - run: npm test
-#        env:
-#          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
-#          VERCEL_ENV: preview
       - name: Install dependencies
         run: yarn
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: yarn playwright test
-        env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
-#
-#         env:
-#           VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
-#           VERCEL_ENV: preview
-#  pa11y:
-#    name: Accessibility tests
-#    needs: wait_for_vercel
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-node@v1
-#        with:
-#          node-version: 14.x
-#      - run: npm install -g pa11y-ci
-#      - run: pa11y-ci --sitemap ${{ needs.wait_for_vercel.outputs.preview_url }}/sitemap.xml
+# Vercel のProduction を常に参照するのであれば、この環境変数の設定は不要
+# もし環境変数を設定するなら、tests/screenshots.spec.js 側でもこの変数を参照するように作り直す必要がある
+#        env:
+#          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
