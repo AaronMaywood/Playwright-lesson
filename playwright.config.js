@@ -98,6 +98,7 @@ const config = {
       },
     },
 	/* 各デバイスごとのテスト - first view */
+/*
     {
       name: 'webkit',
       testDir: './tests/firstview',
@@ -119,6 +120,7 @@ const config = {
         ...devices['iPhone SE landscape'],
       },
     },
+*/
     /* Viewport 毎のテスト
 	
 	MEMO: Bootstrap に見るブレークポイントの種類
