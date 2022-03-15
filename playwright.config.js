@@ -14,13 +14,15 @@ const { devices } = require('@playwright/test');
  */
 const config = {
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 300 * 1000,
+  //timeout: 30 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 50000
+    //timeout: 5000
   },
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -51,6 +53,7 @@ const config = {
         ...devices['Desktop Chrome'],
       },
     },
+/*
     {
       name: 'firefox',
       testDir: './tests/devices',
@@ -95,7 +98,9 @@ const config = {
         ...devices['iPhone X'],
       },
     },
+*/
 	/* 各デバイスごとのテスト - first view */
+/*
     {
       name: 'webkit',
       testDir: './tests/firstview',
@@ -117,6 +122,7 @@ const config = {
         ...devices['iPhone SE landscape'],
       },
     },
+*/
     /* Viewport 毎のテスト
 	
 	MEMO: Bootstrap に見るブレークポイントの種類
@@ -128,6 +134,7 @@ const config = {
 		Extra large			≥1200px
 		Extra extra large	≥1400px
 	*/
+/*
     {
       name: 'chromium-sm',
       testDir: './tests/viewports',
@@ -144,6 +151,7 @@ const config = {
 		viewport: { width: 1280, height: 720 },
       },
     },
+*/
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
