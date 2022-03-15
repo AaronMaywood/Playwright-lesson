@@ -60,6 +60,7 @@ const config = {
         ...devices['Desktop Firefox'],
       },
     },
+/*
     {
       name: 'webkit',
       testDir: './tests/devices',
@@ -97,6 +98,7 @@ const config = {
         ...devices['iPhone X'],
       },
     },
+*/
 	/* 各デバイスごとのテスト - first view */
 /*
     {
