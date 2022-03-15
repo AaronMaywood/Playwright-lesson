@@ -60,7 +60,6 @@ const config = {
         ...devices['Desktop Firefox'],
       },
     },
-/*
     {
       name: 'webkit',
       testDir: './tests/devices',
@@ -98,9 +97,7 @@ const config = {
         ...devices['iPhone X'],
       },
     },
-*/
 	/* 各デバイスごとのテスト - first view */
-/*
     {
       name: 'webkit',
       testDir: './tests/firstview',
@@ -122,7 +119,6 @@ const config = {
         ...devices['iPhone SE landscape'],
       },
     },
-*/
     /* Viewport 毎のテスト
 	
 	MEMO: Bootstrap に見るブレークポイントの種類
@@ -134,7 +130,6 @@ const config = {
 		Extra large			≥1200px
 		Extra extra large	≥1400px
 	*/
-/*
     {
       name: 'chromium-sm',
       testDir: './tests/viewports',
@@ -151,7 +146,6 @@ const config = {
 		viewport: { width: 1280, height: 720 },
       },
     },
-*/
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
