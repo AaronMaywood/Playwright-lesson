@@ -14,20 +14,18 @@ const { devices } = require('@playwright/test');
  */
 const config = {
   /* Maximum time one test can run for. */
-  timeout: 300 * 1000,
-  //timeout: 30 * 1000,
+  timeout: 30 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 50000
-    //timeout: 5000
+    timeout: 5000
   },
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 2,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -40,7 +38,7 @@ const config = {
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on',
   },
 
   /* Configure projects for major browsers */
@@ -69,38 +67,40 @@ const config = {
     },
     {
       name: 'Mobile Chrome',
+      testDir: './tests/devices',
       use: {
         ...devices['Pixel 5'],
       },
     },
     {
       name: 'Mobile Safari',
+      testDir: './tests/devices',
       use: {
         ...devices['iPhone 12'],
       },
     },
-/*
     {
       name: 'small',
+      testDir: './tests/devices',
       use: {
         ...devices['iPhone SE'],
       },
     },
     {
       name: 'small-landscape',
+      testDir: './tests/devices',
       use: {
         ...devices['iPhone SE landscape'],
       },
     },
     {
       name: 'High Device-Pixel-Ratio x3',
+      testDir: './tests/devices',
       use: {
         ...devices['iPhone X'],
       },
     },
-*/
 	/* 各デバイスごとのテスト - first view */
-/*
     {
       name: 'webkit',
       testDir: './tests/firstview',
@@ -122,7 +122,6 @@ const config = {
         ...devices['iPhone SE landscape'],
       },
     },
-*/
     /* Viewport 毎のテスト
 	
 	MEMO: Bootstrap に見るブレークポイントの種類
@@ -134,7 +133,6 @@ const config = {
 		Extra large			≥1200px
 		Extra extra large	≥1400px
 	*/
-/*
     {
       name: 'chromium-sm',
       testDir: './tests/viewports',
@@ -151,7 +149,6 @@ const config = {
 		viewport: { width: 1280, height: 720 },
       },
     },
-*/
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
