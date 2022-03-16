@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install font
-      run: sudo apt install fonts-noto
+      run: sudo apt install fonts-noto-cjk fonts-not-cjk-extra fontconfig && fc-cache -fv
     - uses: actions/setup-node@v2
       with:
         node-version: '14.x'
