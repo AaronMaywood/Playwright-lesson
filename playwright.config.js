@@ -20,7 +20,7 @@ const config = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 5000,
 	toMatchSnapshot: {
 	  maxDiffPixels: 100,
 	  threshold: 0.3,
