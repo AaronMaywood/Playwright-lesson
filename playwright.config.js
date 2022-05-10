@@ -41,122 +41,14 @@ const config = {
     trace: 'on-first-retry',
   },
 
-  /* Configure projects for major browsers */
   projects: [
-	/* 各デバイスごとのテスト - full page */
+	/* ひとまずChromium のみで試す See: tests/tests.spec.js */
     {
       name: 'chromium',
-      testDir: './tests/devices',
       use: {
         ...devices['Desktop Chrome'],
       },
     },
-    {
-      name: 'firefox',
-      testDir: './tests/devices',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
-    {
-      name: 'webkit',
-      testDir: './tests/devices',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
-    {
-      name: 'Mobile Chrome',
-      use: {
-        ...devices['Pixel 5'],
-      },
-    },
-    {
-      name: 'Mobile Safari',
-      use: {
-        ...devices['iPhone 12'],
-      },
-    },
-    {
-      name: 'small',
-      use: {
-        ...devices['iPhone SE'],
-      },
-    },
-    {
-      name: 'small-landscape',
-      use: {
-        ...devices['iPhone SE landscape'],
-      },
-    },
-    {
-      name: 'High Device-Pixel-Ratio x3',
-      use: {
-        ...devices['iPhone X'],
-      },
-    },
-	/* 各デバイスごとのテスト - first view */
-    {
-      name: 'webkit',
-      testDir: './tests/firstview',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
-    {
-      name: 'small',
-      testDir: './tests/firstview',
-      use: {
-        ...devices['iPhone SE'],
-      },
-    },
-    {
-      name: 'small-landscape',
-      testDir: './tests/firstview',
-      use: {
-        ...devices['iPhone SE landscape'],
-      },
-    },
-    /* Viewport 毎のテスト
-	
-	MEMO: Bootstrap に見るブレークポイントの種類
-	https://getbootstrap.jp/docs/5.0/layout/breakpoints/
-		X-Small				< 576px
-		Small				≥576px
-		Medium				≥768px
-		Large				≥992px
-		Extra large			≥1200px
-		Extra extra large	≥1400px
-	*/
-    {
-      name: 'chromium-sm',
-      testDir: './tests/viewports',
-      use: {
-        ...devices['Desktop Chrome'],
-		viewport: { width: 320, height: 720 },
-      },
-    },
-    {
-      name: 'chromium-xlg',
-      testDir: './tests/viewports',
-      use: {
-        ...devices['Desktop Chrome'],
-		viewport: { width: 1280, height: 720 },
-      },
-    },
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
